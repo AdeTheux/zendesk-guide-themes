@@ -1,0 +1,32 @@
+<div class="stripe-maincolor footer-cta">
+  <div class="container">
+    <p>Can't find what you are looking for? <a href="/hc/requests/new" class="footer-cta arrow-link">Submit a request now</a></p>
+  </div>
+</div>
+<footer class="footer">
+    <div class="footer-inner">
+      <div class="footer-language-selector">
+        {{#if alternative_locales}}
+          <div class="dropdown language-selector" aria-haspopup="true">
+            <a class="dropdown-toggle">
+              {{current_locale.name}}
+            </a>
+            <span class="dropdown-menu dropdown-menu-end" role="menu">
+              {{#each alternative_locales}}
+                <a href="{{url}}" dir="{{direction}}" rel="nofollow" role="menuitem">
+                  {{name}}
+                </a>
+              {{/each}}
+            </span>
+          </div>
+        {{/if}}
+      </div>
+    </div>
+    <div class="footer-credits">
+        <p>Made with</p>
+        <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" focusable="false" viewBox="0 0 26 26" style="fill: rgb(0, 54, 61);">
+        <path d="M12 8.2v14.5H0zM12 3c0 3.3-2.7 6-6 6S0 6.3 0 3h12zm2 19.7c0-3.3 2.7-6 6-6s6 2.7 6 6H14zm0-5.2V3h12z"></path>
+        </svg>
+        <p>and <i class="icon ion-heart"></i> by the EMEA SC team</p>
+    </div>    
+  </footer>

@@ -1,0 +1,23 @@
+<div class="stripe-maincolor stripe-content">
+        <div class="container">
+            <h1>
+                {{t 'submit_a_request'}}
+                {{#if follow_up}}
+                    <span class="follow-up-hint">
+                    {{follow_up}}
+                    </span>
+                {{/if}}
+            </h1>
+            {{search submit=false}}
+            <nav class="sub-nav">
+            {{breadcrumbs}}
+            </nav>
+        </div>
+    </div>
+<div class="container">
+  <div class="form">
+    {{request_form}}
+  </div>
+
+  {{chat}}
+</div>

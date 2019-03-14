@@ -1,0 +1,39 @@
+<div class="stripe-maincolor stripe-content">
+    <div class="container">
+        <h1>
+            {{#if section.internal}}
+                <span class="icon-lock" title="{{t 'internal'}}"></span>
+            {{/if}}
+            {{section.name}}
+            {{subscribe}}
+        </h1>
+        {{search scoped=true submit=false}}
+        <nav class="sub-nav">
+        {{breadcrumbs}}
+        </nav>
+    </div>
+</div>
+<div class="container">
+  <div class="section-container">
+    <section class="section-content">
+      {{#if section.articles}}
+        <ul class="article-list">
+          {{#each section.articles}}
+            <li class="article-list-item {{#if promoted}} article-promoted{{/if}}">
+              {{#if promoted}}
+                <span data-title="{{t 'promoted'}}" class="icon-star"></span>
+              {{/if}}
+              <a href="{{url}}" class="article-list-link">{{title}}</a>
+            </li>
+          {{/each}}
+        </ul>
+      {{else}}
+        <i class="section-empty">
+          <a href="{{section.url}}">{{t 'empty'}}</a>
+        </i>
+      {{/if}}
+
+      {{pagination}}
+    </section>
+  </div>
+</div>
