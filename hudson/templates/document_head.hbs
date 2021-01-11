@@ -1,0 +1,47 @@
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+{{#is settings.font_family_base "'Open Sans', sans-serif"}}
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i" rel="stylesheet">
+{{/is}}
+{{#is settings.font_family_base "'Roboto', sans-serif"}}
+  <link href="https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i" rel="stylesheet">
+{{/is}}
+{{#is settings.font_family_base "'Lato', sans-serif"}}
+  <link href="https://fonts.googleapis.com/css?family=Lato:100,100i,300,300i,400,400i,700,700i,900,900i" rel="stylesheet">
+{{/is}}
+{{#is settings.font_family_base "'Slabo 27px', serif"}}
+  <link href="https://fonts.googleapis.com/css?family=Slabo+27px" rel="stylesheet">
+{{/is}}
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.2/css/all.css" />
+<link rel="stylesheet" href="//cdn.jsdelivr.net/highlight.js/9.10.0/styles/github.min.css"/>
+<link rel="stylesheet" href="//cdn.jsdelivr.net/jquery.magnific-popup/1.0.0/magnific-popup.css"/>
+
+<script src="//cdn.jsdelivr.net/jquery.magnific-popup/1.0.0/jquery.magnific-popup.min.js"></script>
+<script src="//cdn.jsdelivr.net/highlight.js/9.10.0/highlight.min.js"></script>
+
+<script src="{{asset 'apidata-min.js'}}"></script>
+
+<link rel="stylesheet" href="{{asset 'sidenav.css'}}" />
+<script src="{{asset 'sidenav-min.js'}}"></script>
+
+<script src="{{asset 'badges-min.js'}}"></script>
+
+<script>
+$(function() {
+  $.badges({
+    container: '.entry-info__author',
+    roles: [{
+        title: 'Admin',
+        users: ['Ilia Zaitsev'],
+        color: '#cc000e'
+    }, {
+        title: 'Moderator',
+        users: ['Andrea Saez', 'Deepa Daniels'],
+        color: '#ccc'
+    }, {
+        title: 'Support manager',
+        users: ['Samantha Flaherty'],
+        color: '#88d046'
+    }]
+  });
+});
+</script>

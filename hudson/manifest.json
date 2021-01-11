@@ -1,0 +1,816 @@
+{
+  "name": "New Clubhouse",
+  "author": "Lotus Themes",
+  "version": "1.3.0",
+  "api_version": 1,
+  "settings": [
+    {
+      "label": "Translations",
+      "variables": [
+        {
+          "identifier": "toggle_translations",
+          "type": "checkbox",
+          "description": "Turn this option to use dynamic content translations",
+          "label": "Use dynamic content translations",
+          "value": false
+        }
+      ]
+    },
+    {
+      "label": "Titles",
+      "variables": [
+        {
+          "identifier": "have_more_questions",
+          "type": "text",
+          "description": "'Have more questions' block title",
+          "label": "Have more questions",
+          "value": "Have more questions?"
+        },
+        {
+          "identifier": "share_it",
+          "type": "text",
+          "description": "'Share it' block title",
+          "label": "Share it",
+          "value": "Share it, if you like it."
+        }
+      ]
+    },
+    {
+      "label": "Colors",
+      "variables": [
+        {
+          "identifier": "body_bg",
+          "type": "color",
+          "description": "Background color of your Help Center",
+          "label": "Background color",
+          "value": "rgba(242, 247, 247, 0.85)"
+        },
+        {
+          "identifier": "brand_primary",
+          "type": "color",
+          "description": "Brand primary color",
+          "label": "Primary color",
+          "value": "rgba(101, 21, 221, 1)"
+        },
+        {
+          "identifier": "brand_secondary",
+          "type": "color",
+          "description": "Brand secondary color",
+          "label": "Secondary color",
+          "value": "rgba(249, 255, 255, 1)"
+        },
+        {
+          "identifier": "text_color",
+          "type": "color",
+          "description": "Text color for body and heading elements",
+          "label": "Text color",
+          "value": "rgba(55, 60, 80, 1)"
+        },
+        {
+          "identifier": "link_color",
+          "type": "color",
+          "description": "Text color for link elements",
+          "label": "Link color",
+          "value": "rgba(101, 21, 221, 1)"
+        }
+      ]
+    },
+    {
+      "label": "Typography",
+      "variables": [
+        {
+          "identifier": "font_size_base",
+          "type": "text",
+          "description": "Size for body text",
+          "label": "Text size",
+          "value": "18px"
+        },
+        {
+          "identifier": "font_family_base",
+          "type": "list",
+          "description": "Font for body text",
+          "label": "Text font",
+          "value": "'Open Sans', sans-serif",
+          "options": [
+            {
+              "label": "Open Sans",
+              "value": "'Open Sans', sans-serif"
+            },
+            {
+              "label": "Roboto",
+              "value": "'Roboto', sans-serif"
+            },
+            {
+              "label": "Lato",
+              "value": "'Lato', sans-serif"
+            },
+            {
+              "label": "Slabo",
+              "value": "'Slabo 27px', serif"
+            },
+            {
+              "label": "Helvetica Neue",
+              "value": "'Helvetica Neue', Arial, Helvetica, sans-serif"
+            },
+            {
+              "label": "Lucida Grande",
+              "value": "'Lucida Grande', 'Lucida Sans', 'Lucida Sans Unicode', sans-serif"
+            },
+            {
+              "label": "Trebuchet MS",
+              "value": "'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif"
+            }
+          ]
+        },
+        {
+          "identifier": "line_height_base",
+          "type": "text",
+          "description": "Space between the lines of text",
+          "label": "Text line height",
+          "value": "1.45"
+        }
+      ]
+    },
+    {
+      "label": "Button",
+      "variables": [
+        {
+          "identifier": "button_color_1",
+          "type": "color",
+          "description": "Color for bordered buttons",
+          "label": "Button bordered",
+          "value": "#eceeef"
+        },
+        {
+          "identifier": "button_color_2",
+          "type": "color",
+          "description": "Color for filled buttons",
+          "label": "Button filled",
+          "value": "rgba(101, 21, 221, 1)"
+        }
+      ]
+    },
+    {
+      "label": "Brand",
+      "variables": [
+        {
+          "identifier": "logo",
+          "type": "file",
+          "description": "Company logo",
+          "label": "Logo"
+        },
+        {
+          "identifier": "logo_height",
+          "type": "text",
+          "description": "Height of the logo",
+          "label": "Logo height",
+          "value": "28px"
+        },
+        {
+          "identifier": "help_center_name",
+          "type": "list",
+          "description": "Help center name",
+          "label": "Help center name",
+          "value": "no",
+          "options": [
+            {
+              "label": "Yes",
+              "value": "yes"
+            },
+            {
+              "label": "No",
+              "value": "no"
+            }
+          ]
+        },
+        {
+          "identifier": "favicon",
+          "type": "file",
+          "description": "Icon displayed in the address bar of your browser",
+          "label": "Favicon"
+        },
+        {
+          "identifier": "border_radius_base",
+          "type": "text",
+          "description": "Border radius for buttons, text field, etc.",
+          "label": "Border radius",
+          "value": "6px"
+        }
+      ]
+    },
+    {
+      "label": "Hero unit",
+      "variables": [
+        {
+          "identifier": "hero_unit_bg_color",
+          "type": "color",
+          "description": "Hero unit background color",
+          "label": "Hero unit background color",
+          "value": "rgba(101, 21, 221, 1)"
+        },
+        {
+          "identifier": "hero_homepage_image",
+          "type": "file",
+          "description": "Hero unit image",
+          "label": "Hero unit image"
+        },
+        {
+          "identifier": "hero_title",
+          "type": "text",
+          "description": "Text above the search field",
+          "label": "Hero unit title",
+          "value": "Hi. We're here to help."
+        },
+        {
+          "identifier": "hero_subtitle",
+          "type": "text",
+          "description": "Text above the search field",
+          "label": "Hero unit subtitle",
+          "value": ""
+        },
+        {
+          "identifier": "search_placeholder",
+          "type": "text",
+          "description": "Search placeholder",
+          "label": "Search placeholder",
+          "value": "Start typing your search…"
+        }
+      ]
+    },
+    {
+      "label": "Home page layout",
+      "variables": [
+        {
+          "identifier": "toggle_custom_blocks",
+          "type": "list",
+          "description": "Toggle Custom Blocks component",
+          "label": "Show Custom Blocks",
+          "value": "yes",
+          "options": [
+            {
+              "label": "Yes",
+              "value": "yes"
+            },
+            {
+              "label": "No",
+              "value": "no"
+            }
+          ]
+        },
+        {
+          "identifier": "toggle_category_tree",
+          "type": "list",
+          "description": "Toggle Category tree component",
+          "label": "Show Category tree",
+          "value": "yes",
+          "options": [
+            {
+              "label": "Yes",
+              "value": "yes"
+            },
+            {
+              "label": "No",
+              "value": "no"
+            }
+          ]
+        },
+        {
+          "identifier": "toggle_promoted_articles",
+          "type": "list",
+          "description": "Toggle Promoted articles component",
+          "label": "Show Promoted articles",
+          "value": "yes",
+          "options": [
+            {
+              "label": "Yes",
+              "value": "yes"
+            },
+            {
+              "label": "No",
+              "value": "no"
+            }
+          ]
+        },
+        {
+          "identifier": "promoted_articles_description",
+          "type": "text",
+          "description": "Promoted articles description",
+          "label": "Promoted articles description",
+          "value": "Find our featured articles and guides here"
+        },
+        {
+          "identifier": "toggle_still_have_questions",
+          "type": "list",
+          "description": "Toggle Still Have Questions component",
+          "label": "Show Still Have Questions?",
+          "value": "yes",
+          "options": [
+            {
+              "label": "Yes",
+              "value": "yes"
+            },
+            {
+              "label": "No",
+              "value": "no"
+            }
+          ]
+        },
+        {
+          "identifier": "still_have_questions",
+          "type": "text",
+          "description": "Still Have Questions title",
+          "label": "Still Have Questions title",
+          "value": "Still Have Questions?"
+        },
+        {
+          "identifier": "still_have_questions_text",
+          "type": "text",
+          "description": "Still Have Questions text",
+          "label": "Still Have Questions text",
+          "value": "Our customer care team is here for you!"
+        },
+        {
+          "identifier": "contact_us_button_text",
+          "type": "text",
+          "description": "Contact us button text",
+          "label": "Contact us button text",
+          "value": "Contact Us"
+        }
+      ]
+    },
+    {
+      "label": "Topbar Link 1",
+      "variables": [
+        {
+          "identifier": "link_1_type",
+          "type": "list",
+          "description": "Link type",
+          "label": "Link type",
+          "value": "home_page",
+          "options": [
+            {
+              "label": "Hidden",
+              "value": "hidden"
+            },
+            {
+              "label": "Custom",
+              "value": "custom"
+            },
+            {
+              "label": "Home page",
+              "value": "home_page"
+            },
+            {
+              "label": "Community main page",
+              "value": "community_page"
+            }
+          ]
+        },
+        {
+          "identifier": "link_1_title",
+          "type": "text",
+          "description": "Link title",
+          "label": "Title",
+          "value": "Link one"
+        },
+        {
+          "identifier": "link_1_url",
+          "type": "text",
+          "description": "Link URL",
+          "label": "URL",
+          "value": "#"
+        }
+      ]
+    },
+    {
+      "label": "Topbar Link 2",
+      "variables": [
+        {
+          "identifier": "link_2_type",
+          "type": "list",
+          "description": "Link type",
+          "label": "Link type",
+          "value": "community_page",
+          "options": [
+            {
+              "label": "Hidden",
+              "value": "hidden"
+            },
+            {
+              "label": "Custom",
+              "value": "custom"
+            },
+            {
+              "label": "Home page",
+              "value": "home_page"
+            },
+            {
+              "label": "Community main page",
+              "value": "community_page"
+            }
+          ]
+        },
+        {
+          "identifier": "link_2_title",
+          "type": "text",
+          "description": "Link title",
+          "label": "Title",
+          "value": "Link two"
+        },
+        {
+          "identifier": "link_2_url",
+          "type": "text",
+          "description": "Link URL",
+          "label": "URL",
+          "value": "#"
+        }
+      ]
+    },
+    {
+      "label": "Topbar Link 3",
+      "variables": [
+        {
+          "identifier": "link_3_type",
+          "type": "list",
+          "description": "Link type",
+          "label": "Link type",
+          "value": "custom",
+          "options": [
+            {
+              "label": "Hidden",
+              "value": "hidden"
+            },
+            {
+              "label": "Custom",
+              "value": "custom"
+            },
+            {
+              "label": "Home page",
+              "value": "home_page"
+            },
+            {
+              "label": "Community main page",
+              "value": "community_page"
+            }
+          ]
+        },
+        {
+          "identifier": "link_3_title",
+          "type": "text",
+          "description": "Link title",
+          "label": "Title",
+          "value": "Link three"
+        },
+        {
+          "identifier": "link_3_url",
+          "type": "text",
+          "description": "Link URL",
+          "label": "URL",
+          "value": "#"
+        }
+      ]
+    },
+    {
+      "label": "Formatting content colors",
+      "variables": [
+        {
+          "identifier": "brand_info",
+          "type": "color",
+          "description": "Brand info color",
+          "label": "Brand info color",
+          "value": "#5bc0de"
+        },
+        {
+          "identifier": "brand_success",
+          "type": "color",
+          "description": "Brand success color",
+          "label": "Brand success color",
+          "value": "#0c9"
+        },
+        {
+          "identifier": "brand_warning",
+          "type": "color",
+          "description": "Brand warning color",
+          "label": "Brand warning color",
+          "value": "#fad782"
+        },
+        {
+          "identifier": "brand_danger",
+          "type": "color",
+          "description": "Brand danger color",
+          "label": "Brand danger color",
+          "value": "#ff5252"
+        }
+      ]
+    },
+    {
+      "label": "Custom Blocks Icons",
+      "variables": [
+        {
+          "identifier": "icon_color",
+          "type": "color",
+          "description": "Color of the Custom Block icons",
+          "label": "Icon color",
+          "value": "rgba(101, 21, 221, 1)"
+        },
+        {
+          "identifier": "icon_height",
+          "type": "text",
+          "description": "Height of the Custom Block icons",
+          "label": "Icon height",
+          "value": "86px"
+        }
+      ]
+    },
+    {
+      "label": "Custom Block 1",
+      "variables": [
+        {
+          "identifier": "custom_block_1_type",
+          "type": "list",
+          "description": "Toggle Custom Blocks component",
+          "label": "Custom block type",
+          "value": "custom",
+          "options": [
+            {
+              "label": "Hidden",
+              "value": "hidden"
+            },
+            {
+              "label": "Custom",
+              "value": "custom"
+            },
+            {
+              "label": "Community",
+              "value": "community"
+            },
+            {
+              "label": "Submit a request",
+              "value": "submit_a_request"
+            }
+          ]
+        },
+        {
+          "identifier": "custom_block_1_icon",
+          "type": "file",
+          "description": "Custom block icon",
+          "label": "Icon"
+        },
+        {
+          "identifier": "custom_block_1_title",
+          "type": "text",
+          "description": "Custom block title",
+          "label": "Title",
+          "value": "Guides"
+        },
+        {
+          "identifier": "custom_block_1_description",
+          "type": "text",
+          "description": "Custom block description",
+          "label": "Description",
+          "value": "Need help? We have you covered."
+        },
+        {
+          "identifier": "custom_block_1_url",
+          "type": "text",
+          "description": "Custom block URL",
+          "label": "URL",
+          "value": "#"
+        }
+      ]
+    },
+    {
+      "label": "Custom Block 2",
+      "variables": [
+        {
+          "identifier": "custom_block_2_type",
+          "type": "list",
+          "description": "Toggle Custom Blocks component",
+          "label": "Custom block type",
+          "value": "custom",
+          "options": [
+            {
+              "label": "Hidden",
+              "value": "hidden"
+            },
+            {
+              "label": "Custom",
+              "value": "custom"
+            },
+            {
+              "label": "Community",
+              "value": "community"
+            },
+            {
+              "label": "Submit a request",
+              "value": "submit_a_request"
+            }
+          ]
+        },
+        {
+          "identifier": "custom_block_2_icon",
+          "type": "file",
+          "description": "Custom block icon",
+          "label": "Icon"
+        },
+        {
+          "identifier": "custom_block_2_title",
+          "type": "text",
+          "description": "Custom block title",
+          "label": "Title",
+          "value": "FAQ"
+        },
+        {
+          "identifier": "custom_block_2_description",
+          "type": "text",
+          "description": "Custom block description",
+          "label": "Description",
+          "value": "Questions? Find the answers to any question."
+        },
+        {
+          "identifier": "custom_block_2_url",
+          "type": "text",
+          "description": "Custom block URL",
+          "label": "URL",
+          "value": "#"
+        }
+      ]
+    },
+    {
+      "label": "Custom Block 3",
+      "variables": [
+        {
+          "identifier": "custom_block_3_type",
+          "type": "list",
+          "description": "Toggle Custom Blocks component",
+          "label": "Custom block type",
+          "value": "community",
+          "options": [
+            {
+              "label": "Hidden",
+              "value": "hidden"
+            },
+            {
+              "label": "Custom",
+              "value": "custom"
+            },
+            {
+              "label": "Community",
+              "value": "community"
+            },
+            {
+              "label": "Submit a request",
+              "value": "submit_a_request"
+            }
+          ]
+        },
+        {
+          "identifier": "custom_block_3_icon",
+          "type": "file",
+          "description": "Custom block icon",
+          "label": "Icon"
+        },
+        {
+          "identifier": "custom_block_3_title",
+          "type": "text",
+          "description": "Custom block title",
+          "label": "Title",
+          "value": "Community"
+        },
+        {
+          "identifier": "custom_block_3_description",
+          "type": "text",
+          "description": "Custom block description",
+          "label": "Description",
+          "value": "Ask questions and share your ideas!"
+        },
+        {
+          "identifier": "custom_block_3_url",
+          "type": "text",
+          "description": "Custom block URL",
+          "label": "URL",
+          "value": "#"
+        }
+      ]
+    },
+    {
+      "label": "Topbar",
+      "variables": [
+        {
+          "identifier": "topbar_text_color",
+          "type": "color",
+          "description": "Topbar text color",
+          "label": "Topbar text color",
+          "value": "#fff"
+        },
+        {
+          "identifier": "topbar_link_color",
+          "type": "color",
+          "description": "Topbar link color",
+          "label": "Topbar link color",
+          "value": "#fff"
+        },
+        {
+          "identifier": "topbar_button_color",
+          "type": "color",
+          "description": "Topbar button color",
+          "label": "Topbar button color",
+          "value": "#fff"
+        }
+      ]
+    },
+    {
+      "label": "Footer",
+      "variables": [
+        {
+          "identifier": "footer_bg",
+          "type": "color",
+          "description": "Footer background color",
+          "label": "Background color",
+          "value": "#fff"
+        },
+        {
+          "identifier": "footer_text_color",
+          "type": "color",
+          "description": "Footer text color",
+          "label": "Text color",
+          "value": "#4c536e"
+        },
+        {
+          "identifier": "footer_link_color",
+          "type": "color",
+          "description": "Footer link color",
+          "label": "Link color",
+          "value": "#4c536e"
+        },
+        {
+          "identifier": "footer_logo",
+          "type": "file",
+          "description": "Footer logo",
+          "label": "Logotype"
+        },
+        {
+          "identifier": "footer_text",
+          "type": "text",
+          "description": "Footer text",
+          "label": "Footer text",
+          "value": ""
+        },
+        {
+          "identifier": "footer_social_icon_height",
+          "type": "text",
+          "description": "Height of social icon",
+          "label": "Social media icon size",
+          "value": "16px"
+        }
+      ]
+    },
+    {
+      "label": "Footer social media links",
+      "variables": [
+        {
+          "identifier": "facebook_url",
+          "type": "text",
+          "description": "URL to Facebook account",
+          "label": "Facebook",
+          "value": "https://facebook.com"
+        },
+        {
+          "identifier": "twitter_url",
+          "type": "text",
+          "description": "URL to Twitter account",
+          "label": "Twitter",
+          "value": "https://twitter.com"
+        },
+        {
+          "identifier": "google_plus_url",
+          "type": "text",
+          "description": "URL to Google Plus account",
+          "label": "Google Plus",
+          "value": "https://plus.google.com"
+        },
+        {
+          "identifier": "linkedin_url",
+          "type": "text",
+          "description": "URL to Linked in account",
+          "label": "Linked in",
+          "value": "https://linkedin.com"
+        },
+        {
+          "identifier": "youtube_url",
+          "type": "text",
+          "description": "URL to YouTube account",
+          "label": "YouTube",
+          "value": "-"
+        },
+        {
+          "identifier": "instagram_url",
+          "type": "text",
+          "description": "URL to Instagram account",
+          "label": "Instagram",
+          "value": "-"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,226 @@
+<div class="container article">
+  <div class="container-inner">
+
+    <div class="row article__header">
+      <div class="column column--md-8 column--lg-9">
+        {{breadcrumbs}}
+        <h1 class="article__title" itemprop="name">
+          {{#if article.internal}}
+            <span class="fas fa-lock" title="{{t 'internal'}}"> </span>
+          {{/if}}
+          {{article.title}}
+          <div class="article__subscribe">
+            {{subscribe}}
+          </div>
+        </h1>
+      </div>
+      <div class="column column--md-4 column--lg-3">
+        <div class="entry-info entry-info_right">
+          <div class="entry-info__avatar {{#if article.author.agent}}avatar--agent{{/if}}">
+            <img class="user-avatar user-avatar--default" src="{{article.author.avatar_url}}" alt="Avatar">
+          </div>
+          <div class="entry-info__content">
+            <b class="entry-info__author">
+              {{#link 'user_profile' id=article.author.id}}
+                {{article.author.name}}
+              {{/link}}
+            </b>
+            <div class="meta">{{date article.created_at format='medium'}}</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="box">
+      <div class="row">
+        <div class="article-container__column article-container__sidenav">
+          <div data-sidenav='{"mobileBreakpoint": 991, "homeTitle": "Home", "buttonText": "Toggle navigation"}'></div>
+        </div>
+        
+        <div class="article-container__column article-container__article">
+          <div class="article__body" data-article>
+            {{article.body}}
+  
+            <div class="article__attachments">
+              {{#if attachments}}
+                <ul class="list-unstyled attachment-list">
+                  {{#each attachments}}
+                    <li class="attachment-list__item">
+                      <span class="fas fa-paperclip attachment-list__icon"></span>
+                      <a href="{{url}}" target="_blank">{{name}}</a>
+                      <div class="meta">({{size}})</div>
+                    </li>
+                  {{/each}}
+                </ul>
+              {{/if}}
+            </div>
+          </div>
+        </div>
+        <!--div class="article-container__column article-container__toc">
+          <div data-toc='{"mobileBreakpoint": 991}'></div>
+        </div-->
+        <div class="article-container__column article-container__sidebar">
+          <section class="related-articles">
+            <h3 class="section-articles__title">{{t 'articles_in_section'}}</h3>
+            <ul class="section-articles__list">
+              {{#each section.articles}}
+                <li class="section-articles__item">
+                  <a href="{{url}}" class="section-articles__link {{#is id ../article.id}}is-active{{/is}}">{{title}}</a>
+                </li>
+              {{/each}}
+            </ul>
+            {{#if section.more_articles}}
+              <a href="{{section.url}}" class="btn btn--default">{{t 'see_more'}}</a>
+            {{/if}}
+          </section>
+        </div>
+      </div>
+    </div>
+
+    {{#with article}}
+      <style>
+        .article__vote-item_up:before {
+          background: url({{asset 'vote_up.svg'}});
+        }
+
+        .article__vote-item_down:before {
+          background: url({{asset 'vote_down.svg'}});
+        }
+      </style>
+      <div class="box article__vote">
+        <div class="article__vote-question">{{t 'was_this_article_helpful'}}</div>
+        <div class="article__vote-controls">
+          {{vote 'up' class='article__vote-item article__vote-item_up' title='Yes' selected_class='article__vote-item_voted' role='button'}}
+          {{vote 'down' class='article__vote-item article__vote-item_down' title='No' selected_class='article__vote-item_voted' role='button'}}
+        </div>
+        <div class="article__vote-count">
+          {{vote 'label' class='meta'}}
+        </div>
+      </div>
+    {{/with}}
+
+    <div class="box comments" id="comments" itemscope itemtype="http://schema.org/UserComments">
+      <div class="comments__header">
+        <div class="comments__title">
+          <h3 class="h3">{{t 'comments'}}</h3>
+          <p class="meta">{{t 'comments_count' count=article.comment_count}}</p>
+        </div>
+
+        <div class="comment__sorter">
+          {{#if comments}}
+            <div class="dropdown">
+              <a class="dropdown-toggle btn btn--default">{{t 'sort_by'}}</a>
+              <span class="dropdown-menu dropdown-menu-end" role="menu">
+                {{#each comment_sorters}}
+                  <a aria-selected="{{selected}}" href="{{url}}" role="menuitem">{{name}}</a>
+                {{/each}}
+              </span>
+            </div>
+          {{/if}}
+        </div>
+      </div>
+
+      {{#if comments}}
+        <ul class="comments__list">
+          {{#each comments}}
+            <li class="comment" id="{{anchor}}">
+              <div class="comment__content">
+                <div class="entry-info">
+                  <div class="entry-info__avatar {{#if author.agent}}avatar--agent{{/if}}">
+                    <img class="user-avatar user-avatar--default" src="{{author.avatar_url}}" alt="Avatar">
+                  </div>
+                  <div class="entry-info__content">
+                    <b class="entry-info__author">
+                      {{#link 'user_profile' id=author.id}}
+                        {{author.name}}
+                      {{/link}}
+                    </b>
+                    <div class="meta">{{date created_at}}</div>
+                  </div>
+                </div>
+                <div class="comment__body">
+                  {{body}}
+                </div>
+              </div>
+              {{#unless official}}
+                <div class="comment__vote">
+                  {{vote 'up' class='fa fa-arrow-up btn comment__vote-control comment__vote-control_up' role='button'}}
+                  <div class="vote-sum">
+                    {{vote 'sum'}}
+                  </div>
+                  {{vote 'down' class='fa fa-arrow-down btn comment__vote-control comment__vote-control_down' role='button'}}
+                </div>
+              {{/unless}}
+            </li>
+          {{/each}}
+        </ul>
+
+        {{pagination}}
+      {{/if}}
+
+    </div>
+
+    <div class="box">
+      <p class="comments__callout">{{comment_callout}}</p>
+
+      {{#form 'comment' class='comment-form'}}
+        <div class="comment-form__avatar">
+          {{user_avatar class='user-avatar user-avatar--default'}}
+        </div>
+        <div class="comment-form__body">
+          {{wysiwyg 'body'}}
+        </div>
+        <div class="comment-form__controls">
+          {{checkbox 'official'}}
+          {{label 'official'}}
+        </div>
+        {{input type='submit'}}
+      {{/form}}
+    </div>
+
+    <div class="search-box search-box_page">
+  <svg version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 25 26">
+    <path d="M20,18.9c1.6-2.1,2.4-4.6,2.4-7.2c0-6.4-5-11.7-11.2-11.7C5,0,0,5.3,0,11.7s5,11.7,11.2,11.7
+          c2.5,0,5-0.9,6.9-2.5l4.6,4.8c0.3,0.3,0.6,0.4,0.9,0.4c0.3,0,0.7-0.1,0.9-0.4c0.5-0.6,0.5-1.4,0-2L20,18.9z M20,12
+          c0,4.9-3.8,9-8.5,9s-9.1-4.1-9.1-9s4.4-9.5,9.1-9.5S20,7,20,12z"/>
+  </svg>
+  {{search instant=true placeholder=settings.search_placeholder}}
+</div>
+    <div class="share-box">
+  <div class="row">
+    <div class="column column--sm-6">
+      <div class="share-box__left">
+        <img class="share-box__img" src="{{asset 'article_1.svg'}}" alt="">
+        <div class="share-box__content">
+          <div class="h3 share-box__title">
+            {{#if settings.toggle_translations}}
+              {{dc settings.have_more_questions}}
+            {{else}}
+              {{settings.have_more_questions}}
+            {{/if}}
+          </div>
+          {{link 'new_request' class='btn btn--primary still-have-questions__btn'}}
+        </div>
+      </div>
+    </div>
+    <div class="column column--sm-6">
+      <div class="share-box__right">
+        <img class="share-box__img" src="{{asset 'article_2.svg'}}" alt="">
+        <div class="share-box__content">
+          <div class="h3 share-box__title">
+            {{#if settings.toggle_translations}}
+              {{dc settings.share_it}}
+            {{else}}
+              {{settings.share_it}}
+            {{/if}}
+          </div>
+          {{share}}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+  </div>
+</div>

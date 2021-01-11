@@ -1,0 +1,17 @@
+<div class="container article">
+  <div class="container-inner">
+
+    {{breadcrumbs}}
+
+    <div class="page-title">
+      <h1 class="h2 page-title__title">{{t 'submit_a_request'}}</h1>
+      {{#if parent}}
+        <p class="page-title__description">{{follow_up}}</p>
+      {{/if}}
+    </div>
+
+    <div class="box box_top">
+      {{request_form}}
+    </div>
+  </div>
+</div>

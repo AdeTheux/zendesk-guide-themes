@@ -1,0 +1,125 @@
+<div class="container article">
+  <div class="container-inner">
+
+    {{breadcrumbs}}
+
+    <h1 class="h2 page-title__title">
+      {{#if topic.internal}}
+        <span class="fas fa-lock" title="{{t 'internal'}}"></span>
+      {{/if}}
+      {{topic.name}}
+      {{link 'new_post' role='button' class='btn btn--default article-subscribe' topic_id=topic.id}}
+    </h1>
+
+    {{#if topic.description}}
+      <p class="page-title__description">{{topic.description}}</p>
+    {{/if}}
+
+    <div class="box box_min box_top">
+
+      <div class="topic-controls clearfix">
+        <div class="topic-filters topic-controls__item clearfix">
+        <span class="dropdown topic-filters__item">
+          <span class="dropdown-toggle btn btn--default">
+            {{current_filter.label}}
+          </span>
+          <span class="dropdown-menu" role="menu">
+            {{#each filters}}
+              <a href="{{url}}" aria-selected="{{selected}}" role="menuitem">
+                {{name}}
+              </a>
+            {{/each}}
+          </span>
+        </span>
+
+          <span class="dropdown topic-filters__item">
+          <span class="dropdown-toggle btn btn--default">
+            {{current_sorter.label}}
+          </span>
+          <span class="dropdown-menu" role="menu">
+            {{#each sorters}}
+              <a href="{{url}}" aria-selected="{{selected}}" role="menuitem">
+                {{name}}
+              </a>
+            {{/each}}
+          </span>
+        </span>
+        </div>
+        <div class="topic-controls__item topic-controls__item--subscribe">
+          <span class="meta topic-followers">{{t 'follower_count' count=topic.follower_count}}</span> {{subscribe}}
+        </div>
+      </div>
+
+      {{#if posts}}
+        <ul class="list-unstyled post-list">
+          {{#each posts}}
+            <li class="post-list-item {{#if has_official_comment}} question-official-answer {{/if}} {{#if featured}} post-list-item--featured {{/if}} {{#if pinned}} post-list-item--pinned {{/if}}">
+              <div class="post-list-item__col post-list-item__col--main">
+                <h3 class="post-list-item__title">
+                  {{#if pinned}}<span class="fas fa-star"></span>{{/if}}
+                  <a href="{{url}}">{{title}}</a>
+                </h3>
+                <div class="meta post-list-item__meta">
+                  <span class="meta__item">
+                    {{#if author.url}}
+                      <a href="{{author.url}}" target="_zendesk_lotus">
+                        {{author.name}}
+                      </a>
+                    {{else}}
+                      {{author.name}}
+                    {{/if}}
+                  </span>
+                  <span class="meta__item">
+                    {{date created_at timeago=true}}
+                  </span>
+                  {{! Show the post status, if any }}
+                  {{#is status 'none'}}
+                  {{else}}
+                    <span class="meta__item">
+                      <span class="post-status post-status--{{status_dasherized}}">
+                        {{status_name}}
+                      </span>
+                    </span>
+                  {{/is}}
+                </div>
+              </div>
+              <div class="post-list-item__col post-list-item__col--side">
+                <span class="post-info">
+                  <span class="post-info__count">
+                    {{vote_sum}}
+                  </span>
+                  <span class="post-info__text">
+                    {{t 'vote' count=vote_sum}}
+                  </span>
+                </span>
+                <span class="post-info">
+                  <span class="post-info__count">
+                    {{comment_count}}
+                  </span>
+                  <span class="post-info__text">
+                    {{t 'comment' count=comment_count}}
+                  </span>
+                </span>
+              </div>
+            </li>
+          {{/each}}
+        </ul>
+
+        {{pagination}}
+      {{else}}
+        <p>{{t 'no_content'}}</p>
+      {{/if}}
+
+    </div>
+
+    <div class="search-box search-box_page">
+  <svg version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 25 26">
+    <path d="M20,18.9c1.6-2.1,2.4-4.6,2.4-7.2c0-6.4-5-11.7-11.2-11.7C5,0,0,5.3,0,11.7s5,11.7,11.2,11.7
+          c2.5,0,5-0.9,6.9-2.5l4.6,4.8c0.3,0.3,0.6,0.4,0.9,0.4c0.3,0,0.7-0.1,0.9-0.4c0.5-0.6,0.5-1.4,0-2L20,18.9z M20,12
+          c0,4.9-3.8,9-8.5,9s-9.1-4.1-9.1-9s4.4-9.5,9.1-9.5S20,7,20,12z"/>
+  </svg>
+  {{search instant=true placeholder=settings.search_placeholder}}
+</div>
+
+  </div>
+</div>

@@ -1,0 +1,153 @@
+<div class="container article post {{#if post.featured}} post--featured {{/if}} {{#if post.pinned}} post--pinned {{/if}}">
+  <div class="container-inner">
+
+    <div class="row article__header">
+      <div class="column column--md-8 column--lg-9">
+        {{breadcrumbs}}
+        <h1 class="article__title post-title" itemprop="name">
+          {{#is post.status 'none'}}
+          {{else}}
+            <span class="post-status post-status--{{post.status_dasherized}}">{{post.status_name}} </span>
+          {{/is}}
+          {{post.title}}
+          <div class="article__subscribe">
+            {{subscribe}}
+          </div>
+        </h1>
+         {{post.actions}}
+      </div>
+      <div class="column column--md-4 column--lg-3">
+        <div class="entry-info entry-info_right">
+          <div class="entry-info__avatar {{#if post.author.agent}}avatar--agent{{/if}}">
+            <img class="user-avatar user-avatar--default" src="{{post.author.avatar_url}}" alt="Avatar">
+          </div>
+          <div class="entry-info__content">
+            <b class="entry-info__author">
+              {{#link 'user_profile' id=post.author.id}}
+                {{post.author.name}}
+              {{/link}}
+            </b>
+            <div class="meta">{{date post.created_at format='medium'}}</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="box">
+      <div class="row">
+        <div class="column column--md-8 article__body">
+          {{post.details}}
+          <div class="post__actions">
+            {{post.actions}}
+          </div>
+        </div>
+        <div class="column column--md-4">
+          <p class="post-callout__title"><b>{{t 'suggest_new_post'}}</b></p>
+          {{link 'new_post' role='button' class='btn btn--primary'}}
+        </div>
+      </div>
+    </div>
+
+    {{#with post}}
+      <style>
+        .article__vote-item_up:before {
+          background: url({{asset 'vote_up.svg'}});
+        }
+
+        .article__vote-item_down:before {
+          background: url({{asset 'vote_down.svg'}});
+        }
+      </style>
+      <div class="box article__vote">
+        <div class="article__vote-question">Was this post helpful?</div>
+        <div class="article__vote-controls">
+          {{vote 'up' class='article__vote-item article__vote-item_up' title='Yes' selected_class='article__vote-item_voted' role='button'}}
+          {{vote 'down' class='article__vote-item article__vote-item_down' title='No' selected_class='article__vote-item_voted' role='button'}}
+        </div>
+        <div class="article__vote-count">
+          {{vote 'label' class='meta'}}
+        </div>
+      </div>
+    {{/with}}
+
+    <div class="box comments" id="comments" itemscope itemtype="http://schema.org/UserComments">
+      <div class="comments__header">
+        <div class="comments__title">
+          <h3 class="h3">{{t 'comments'}}</h3>
+          <p class="meta">{{t 'comments_count' count=post.comment_count}}</p>
+        </div>
+
+        <div class="comment__sorter">
+          {{#if comments}}
+            <div class="dropdown">
+              <a class="dropdown-toggle btn btn--default">{{t 'sort_by'}}</a>
+              <span class="dropdown-menu dropdown-menu-end" role="menu">
+                {{#each comment_sorters}}
+                  <a aria-selected="{{selected}}" href="{{url}}" role="menuitem">{{name}}</a>
+                {{/each}}
+              </span>
+            </div>
+          {{/if}}
+        </div>
+      </div>
+
+      {{#if comments}}
+        <ul class="comments__list">
+          {{#each comments}}
+            <li class="comment" id="{{anchor}}">
+              <div class="comment__content">
+                <div class="entry-info">
+                  <div class="entry-info__avatar {{#if author.agent}}avatar--agent{{/if}}">
+                    <img class="user-avatar user-avatar--default" src="{{author.avatar_url}}" alt="Avatar">
+                  </div>
+                  <div class="entry-info__content">
+                    <b class="entry-info__author">
+                      {{#link 'user_profile' id=author.id}}
+                        {{author.name}}
+                      {{/link}}
+                    </b>
+                    <div class="meta">{{date created_at}}</div>
+                  </div>
+                </div>
+                <div class="comment__body">
+                  {{body}}
+                </div>
+              </div>
+              {{#unless official}}
+                <div class="comment__vote">
+                  {{vote 'up' class='fa fa-arrow-up btn comment__vote-control comment__vote-control_up' role='button'}}
+                  <div class="vote-sum">
+                    {{vote 'sum'}}
+                  </div>
+                  {{vote 'down' class='fa fa-arrow-down btn comment__vote-control comment__vote-control_down' role='button'}}
+                </div>
+              {{/unless}}
+            </li>
+          {{/each}}
+        </ul>
+
+        {{pagination}}
+      {{/if}}
+
+    </div>
+
+    <div class="box">
+      <p class="comments__callout">{{comment_callout}}</p>
+
+      {{#form 'comment' class='comment-form'}}
+        <div class="comment-form__avatar">
+          {{user_avatar class='user-avatar user-avatar--default'}}
+        </div>
+        <div class="comment-form__body">
+          {{wysiwyg 'body'}}
+        </div>
+        <div class="comment-form__controls">
+          {{checkbox 'official'}}
+          {{label 'official'}}
+        </div>
+        {{input type='submit'}}
+      {{/form}}
+    </div>
+
+  </div>
+</div>

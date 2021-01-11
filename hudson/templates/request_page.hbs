@@ -1,0 +1,183 @@
+<div class="container article">
+  <div class="container-inner">
+
+    {{breadcrumbs}}
+    <div class="search-box search-box_page">
+  <svg version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 25 26">
+    <path d="M20,18.9c1.6-2.1,2.4-4.6,2.4-7.2c0-6.4-5-11.7-11.2-11.7C5,0,0,5.3,0,11.7s5,11.7,11.2,11.7
+          c2.5,0,5-0.9,6.9-2.5l4.6,4.8c0.3,0.3,0.6,0.4,0.9,0.4c0.3,0,0.7-0.1,0.9-0.4c0.5-0.6,0.5-1.4,0-2L20,18.9z M20,12
+          c0,4.9-3.8,9-8.5,9s-9.1-4.1-9.1-9s4.4-9.5,9.1-9.5S20,7,20,12z"/>
+  </svg>
+  {{search instant=true placeholder=settings.search_placeholder}}
+</div>
+
+    <div class="page-title">
+      {{satisfaction}}
+      <h1 class="h2 page-title__title">{{request.subject}}</h1>
+      <p class="page-title__description">{{t 'request' request_number=request.id}}</p>
+    </div>
+
+    <div class="box box_min box_top">
+      <div class="row">
+        <div class="column column--sm-8">
+
+          <ul class="comments__list" id="comments" itemscope itemtype="http://schema.org/UserComments">
+            {{#each comments}}
+              <li class="comment request__comment" id="{{anchor}}">
+                <div class="comment__content">
+                  <div class="entry-info">
+                    <div class="entry-info__avatar {{#if author.agent}}avatar--agent{{/if}}">
+                      <img class="user-avatar user-avatar--default" src="{{author.avatar_url}}" alt="Avatar">
+                    </div>
+                    <div class="entry-info__content">
+                      <b class="entry-info__author">
+                        {{#link 'user_profile' id=author.id}}
+                          {{author.name}}
+                        {{/link}}
+                      </b>
+                      <div class="meta">{{date created_at}}</div>
+                    </div>
+                  </div>
+                  <div class="comment__body">
+                    {{body}}
+                    {{#if attachments}}
+                      <ul class="list-unstyled attachment-list">
+                        {{#each attachments}}
+                          <li class="attachment-list__item">
+                            <a href="{{url}}" target="_blank" class="btn btn--default">
+                              <span class="fas fa-paperclip attachment-list__icon"></span>
+                              <span>{{name}}</span>
+                              <span class="meta">({{size}})</span>
+                            </a>
+                          </li>
+                        {{/each}}
+                      </ul>
+                    {{/if}}
+                  </div>
+                </div>
+              </li>
+            {{/each}}
+          </ul>
+
+          {{pagination}}
+
+        </div>
+
+        <div class="column column--sm-4">
+          <div class="request-sidebar">
+            <p><b>{{t 'submitted_by' requester_name=request.requester.name}}</b></p>
+
+            <dl class="request-details">
+
+              {{#form 'organization' id='request-organization'}}
+                <dt>{{t 'organization'}}</dt>
+                <dd>{{select 'organization'}}</dd>
+              {{/form}}
+
+              {{#if group}}
+                <dt>{{t 'group'}}</dt>
+                <dd>
+                  <span>{{group.name}}</span>
+                </dd>
+              {{/if}}
+
+              <dt>{{t 'status'}}</dt>
+              <dd>
+              <span class="request-status request-status--{{request.status}}" title="{{request.status_description}}">
+                {{request.status_name}}
+              </span>
+              </dd>
+
+              {{#if request.type}}
+                <dt>{{t 'type'}}</dt>
+                <dd>
+                <span>
+                  {{request.type_name}}
+                  {{#is request.type 'task'}}{{t 'task_due_date' due_date=request.due_date}}{{/is}}
+                </span>
+                </dd>
+              {{/if}}
+
+              {{#if request.priority}}
+                <dt>{{t 'priority'}}</dt>
+                <dd>
+                  <span>{{request.priority_name}}</span>
+                </dd>
+              {{/if}}
+
+              {{#if assignee}}
+                <dt>{{t 'assignee'}}</dt>
+                <dd>
+                  <span>{{assignee.name}}</span>
+                </dd>
+              {{/if}}
+
+              {{#each custom_fields}}
+                <dt>{{title}}</dt>
+                <dd>
+                  <span>{{value}}</span>
+                </dd>
+              {{/each}}
+
+              {{#if attachments}}
+                <ul class="list-unstyled attachment-list">
+                  {{#each attachments}}
+                    <li class="attachment-list__item">
+                      <a href="{{url}}" target="_blank" class="btn btn--default">
+                        <span class="fas fa-paperclip attachment-list__icon"></span>
+                        <span>{{name}}</span>
+                        <span class="meta">({{size}})</span>
+                      </a>
+                    </li>
+                  {{/each}}
+                </ul>
+              {{/if}}
+
+              {{#if collaborators}}
+                <dt>{{t 'ccs'}}</dt>
+                <dd>
+                  <span>{{t 'ccs_description'}}</span>
+                  <ul class="list-unstyled">
+                    {{#each collaborators}}
+                      <li>{{name}}</li>
+                    {{/each}}
+                  </ul>
+                </dd>
+              {{/if}}
+            </dl>
+          </div>
+
+          <p>
+            {{link 'new_request' class='btn btn--default' role='button'}}
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <div class="box">
+      <p class="comments__callout">{{comment_callout}}</p>
+
+      {{#form 'comment' class='comment-form'}}
+        <div class="comment-form__avatar">
+          <div class="avatar avatar--comment">
+            {{user_avatar class='user-avatar user-avatar--default'}}
+          </div>
+        </div>
+        <div class="comment-form__body">
+          {{textarea 'body' rows='4'}}
+        </div>
+        <div class="comment-form__attachments">
+          {{upload}}
+        </div>
+        <div class="comment-form__controls">
+          <div class="comment-form__mark-as-solved">
+            {{checkbox 'mark_as_solved'}}
+            {{label 'mark_as_solved'}}
+          </div>
+          {{input type='submit'}}
+        </div>
+      {{/form}}
+    </div>
+
+  </div>
+</div>

@@ -1,0 +1,162 @@
+<div class="layout">
+  <div class="layout__head">
+    <header class="topbar container" data-topbar>
+      <div class="container-inner">
+        <div class="topbar__inner">
+          <div class="topbar__col topbar__logo clearfix">
+            <div class="logo-wrapper">
+              <div class="logo">
+                {{#link 'help_center'}}
+                  <img src="{{logo_url}}" alt="{{t 'logo'}}">
+                {{/link}}
+              </div>
+            </div>
+            {{#is settings.help_center_name 'yes'}}
+              <p class="help-center-name">{{help_center.name}}</p>
+            {{/is}}
+            <button type="button" role="button" aria-label="Toggle Navigation" class="lines-button x" data-toggle-menu>
+              <span class="lines"></span>
+            </button>
+          </div>
+          <div class="topbar__col topbar__menu">
+            <div class="topbar__collapse" data-menu>
+              <ul class="topbar__navigation">
+
+                {{#isnt settings.link_1_type 'hidden'}}
+                  <li>
+                    {{#is settings.link_1_type 'custom'}}
+                      <a href="{{settings.link_1_url}}">
+                        {{#if settings.toggle_translations}}
+                          {{dc settings.link_1_title}}
+                        {{else}}
+                          {{settings.link_1_title}}
+                        {{/if}}
+                      </a>
+                    {{/is}}
+                    {{#is settings.link_1_type 'home_page'}}
+                      {{#link 'help_center'}}
+                        {{#if settings.toggle_translations}}
+                          {{dc settings.link_1_title}}
+                        {{else}}
+                          {{settings.link_1_title}}
+                        {{/if}}
+                      {{/link}}
+                    {{/is}}
+                    {{#is settings.link_1_type 'community_page'}}
+                      {{#link 'community'}}
+                        {{#if settings.toggle_translations}}
+                          {{dc settings.link_1_title}}
+                        {{else}}
+                          {{settings.link_1_title}}
+                        {{/if}}
+                      {{/link}}
+                    {{/is}}
+                  </li>
+                {{/isnt}}
+
+                {{#isnt settings.link_2_type 'hidden'}}
+                  <li>
+                    {{#is settings.link_2_type 'custom'}}
+                      <a href="{{settings.link_2_url}}">
+                        {{#if settings.toggle_translations}}
+                          {{dc settings.link_2_title}}
+                        {{else}}
+                          {{settings.link_2_title}}
+                        {{/if}}</a>
+                    {{/is}}
+                    {{#is settings.link_2_type 'home_page'}}
+                      {{#link 'help_center'}}
+                        {{#if settings.toggle_translations}}
+                          {{dc settings.link_2_title}}
+                        {{else}}
+                          {{settings.link_2_title}}
+                        {{/if}}
+                      {{/link}}
+                    {{/is}}
+                    {{#is settings.link_2_type 'community_page'}}
+                      {{#link 'community'}}
+                        {{#if settings.toggle_translations}}
+                          {{dc settings.link_2_title}}
+                        {{else}}
+                          {{settings.link_2_title}}
+                        {{/if}}
+                      {{/link}}
+                    {{/is}}
+                  </li>
+                {{/isnt}}
+
+                {{#isnt settings.link_3_type 'hidden'}}
+                  <li>
+                    {{#is settings.link_3_type 'custom'}}
+                      <a href="{{settings.link_3_url}}">
+                        {{#if settings.toggle_translations}}
+                          {{dc settings.link_3_title}}
+                        {{else}}
+                          {{settings.link_3_title}}
+                        {{/if}}</a>
+                    {{/is}}
+                    {{#is settings.link_3_type 'home_page'}}
+                      {{#link 'help_center'}}
+                        {{#if settings.toggle_translations}}
+                          {{dc settings.link_3_title}}
+                        {{else}}
+                          {{settings.link_3_title}}
+                        {{/if}}
+                      {{/link}}
+                    {{/is}}
+                    {{#is settings.link_3_type 'community_page'}}
+                      {{#link 'community'}}
+                        {{#if settings.toggle_translations}}
+                          {{dc settings.link_3_title}}
+                        {{else}}
+                          {{settings.link_3_title}}
+                        {{/if}}
+                      {{/link}}
+                    {{/is}}
+                  </li>
+                {{/isnt}}
+
+              </ul>
+              <div class="topbar__controls">
+
+                {{#if alternative_locales}}
+                  <div class="dropdown language-selector hidden-xs hidden-xxs hidden-sm" aria-haspopup="true">
+                    <a class="dropdown-toggle btn btn--topbar">
+                      {{current_locale.name}}
+                    </a>
+                    <span class="dropdown-menu" role="menu">
+                      {{#each alternative_locales}}
+                        <a href="{{url}}" dir="{{direction}}" rel="nofollow" role="menuitem">
+                          {{name}}
+                        </a>
+                      {{/each}}
+                    </span>
+                  </div>
+                {{/if}}
+
+                {{link 'new_request' class='btn btn--topbar submit-a-request'}}
+                {{user_info}}
+
+                {{#if alternative_locales}}
+                  <div class="dropdown topbar__locales language-selector hidden-lg hidden-md" aria-haspopup="true">
+                    <a class="dropdown-toggle btn btn--topbar">
+                      {{current_locale.name}}
+                    </a>
+                    <span class="dropdown-menu" role="menu">
+                      {{#each alternative_locales}}
+                        <a href="{{url}}" dir="{{direction}}" rel="nofollow" role="menuitem">
+                          {{name}}
+                        </a>
+                      {{/each}}
+                    </span>
+                  </div>
+                {{/if}}
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
+  </div>
+  <div class="layout__main">

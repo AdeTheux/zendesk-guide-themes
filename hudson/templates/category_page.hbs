@@ -1,0 +1,63 @@
+<div class="container">
+  <div class="container-inner">
+    {{breadcrumbs}}
+    <div class="search-box search-box_page">
+  <svg version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 25 26">
+    <path d="M20,18.9c1.6-2.1,2.4-4.6,2.4-7.2c0-6.4-5-11.7-11.2-11.7C5,0,0,5.3,0,11.7s5,11.7,11.2,11.7
+          c2.5,0,5-0.9,6.9-2.5l4.6,4.8c0.3,0.3,0.6,0.4,0.9,0.4c0.3,0,0.7-0.1,0.9-0.4c0.5-0.6,0.5-1.4,0-2L20,18.9z M20,12
+          c0,4.9-3.8,9-8.5,9s-9.1-4.1-9.1-9s4.4-9.5,9.1-9.5S20,7,20,12z"/>
+  </svg>
+  {{search instant=true placeholder=settings.search_placeholder}}
+</div>
+
+    <div class="category-tree" id="category">
+      <section class="category-tree__item">
+        <h2 class="category-tree__title">{{category.name}}</h2>
+        {{#if category.description}}
+          <p class="category-tree__description">{{category.description}}</p>
+        {{/if}}
+        {{#if sections}}
+          {{#each sections}}
+            <div class="section" data-tree>
+              <div class="section__title" data-tree-link>
+                <h3 class="section__title-name">{{name}}</h3>
+                {{#if articles}}
+                  <div class="section__title-icon">
+                    <i class="fas fa-angle-down" aria-hidden="true"></i>
+                  </div>
+                {{/if}}
+              </div>
+              <ul class="article-list" data-tree-box>
+                {{#if sections}}
+                  {{#each sections}}
+                    <li class="article-list__item">
+                      <a class="article-list__item-link link-black" href="{{url}}">{{name}}</a>
+                    </li>
+                  {{/each}}
+                {{/if}}
+                {{#if articles}}
+                  {{#each articles}}
+                    <li class="article-list__item {{#if promoted}}article-list__item_is-promoted{{/if}}">
+                      {{#if promoted}}
+                        <span class="fas fa-star" title="{{t 'promoted'}}"></span>
+                      {{/if}}
+                      <a class="article-list__item-link link-black" href="{{url}}">{{title}}</a>
+                    </li>
+                  {{/each}}
+                  {{#if more_articles}}
+                    <li class="article-list__item">
+                      <a href="{{url}}" class="btn btn--primary see-all-articles">
+                        {{t 'show_all_articles' count=article_count}}
+                      </a>
+                    </li>
+                  {{/if}}
+                {{/if}}
+              </ul>
+            </div>
+          {{/each}}
+        {{/if}}
+      </section>
+    </div>
+
+  </div>
+</div>

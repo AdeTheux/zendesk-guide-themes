@@ -1,0 +1,61 @@
+<div class="container article">
+  <div class="container-inner">
+
+    {{breadcrumbs}}
+    <div class="search-box search-box_page">
+  <svg version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 25 26">
+    <path d="M20,18.9c1.6-2.1,2.4-4.6,2.4-7.2c0-6.4-5-11.7-11.2-11.7C5,0,0,5.3,0,11.7s5,11.7,11.2,11.7
+          c2.5,0,5-0.9,6.9-2.5l4.6,4.8c0.3,0.3,0.6,0.4,0.9,0.4c0.3,0,0.7-0.1,0.9-0.4c0.5-0.6,0.5-1.4,0-2L20,18.9z M20,12
+          c0,4.9-3.8,9-8.5,9s-9.1-4.1-9.1-9s4.4-9.5,9.1-9.5S20,7,20,12z"/>
+  </svg>
+  {{search instant=true placeholder=settings.search_placeholder}}
+</div>
+
+    <div class="page-title">
+      <h1 class="h2 page-title__title">{{t 'my_activities' }}</h1>
+
+      <nav class="my-activities-menu my-activities-menu--main">
+        <ul class="my-activities-menu__items clearfix">
+          {{#if help_center.request_management_enabled}}
+            <li class="my-activities-menu__item">{{link 'requests'}}</li>
+          {{/if}}
+          <li class="my-activities-menu__item">{{link 'contributions'}}</li>
+          <li class="my-activities-menu__item is-active">{{t 'following'}}</li>
+        </ul>
+      </nav>
+    </div>
+
+    <div class="box box_min box_top">
+
+      {{#if subscriptions}}
+        <div class="my-activities-items">
+          <div class="my-activities-items__head">
+            <div class="my-activities-items__row">
+              <div class="my-activities-items__col">{{t 'title'}}</div>
+              <div class="my-activities-items__col">{{t 'type'}}</div>
+              <div class="my-activities-items__col">{{t 'subscription'}}</div>
+              <div class="my-activities-items__col">&nbsp;</div>
+            </div>
+          </div>
+          <div class="my-activities-items__body">
+            {{#each subscriptions}}
+              <div class="my-activities-items__row my-activities-item">
+                <div class="my-activities-items__col">
+                  <a class="my-activities-item__title" href="{{url}}">
+                    {{excerpt title characters=60}}
+                  </a>
+                </div>
+                <div class="my-activities-items__col my-activities-item__meta">{{name}}</div>
+                <div class="my-activities-items__col my-activities-item__meta">{{unsubscribe}}</div>
+                <div class="my-activities-items__col my-activities-item__meta">{{subscribe}}</div>
+              </div>
+            {{/each}}
+          </div>
+        </div>
+        {{pagination}}
+      {{else}}
+        <p class="my-activities__no_contributions">{{t 'not_following'}}</p>
+      {{/if}}
+    </div>
+  </div>
+</div>

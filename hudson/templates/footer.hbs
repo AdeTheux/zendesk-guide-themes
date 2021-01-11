@@ -1,0 +1,82 @@
+</div>
+<div class="footer">
+  <footer class="container">
+    <div class="container-inner">
+      <div class="row">
+        <div class="column column--sm-5 custom-block">
+          <div class="footer__logo">
+            {{#link 'help_center'}}
+              <img src="{{settings.footer_logo}}" alt="{{t 'logo'}}">
+            {{/link}}
+          </div>
+          <div class="footer__text">
+            {{#if settings.toggle_translations}}
+              {{dc settings.footer_text}}
+            {{else}}
+              {{settings.footer_text}}
+            {{/if}}
+          </div>
+        </div>
+        <div class="column column--sm-2 column--xs-6 custom-block">
+          <div class="footer__header">Links</div>
+          <ul class="footer__menu">
+            <li><a href="#">About Us</a></li>
+            <li><a href="#">Work</a></li>
+            <li><a href="#">Contact</a></li>
+          </ul>
+        </div>
+        <div class="column column--sm-2 column--xs-6 custom-block">
+          <div class="footer__header">Support</div>
+          <ul class="footer__menu">
+            <li><a href="#">Community</a></li>
+            <li><a href="#">Site Status</a></li>
+            <li><a href="#">FAQ</a></li>
+          </ul>
+        </div>
+        <div class="column column--sm-3 custom-block">
+          <div class="footer__header">Contacts</div>
+          <ul class="footer__menu footer__menu_contacts">
+            <li><a href="mailto:contact@email.com" target="_blank">contact@email.com</a></li>
+            <li><a href="tel:+48123456789" target="_blank">+48 123 456 789</a></li>
+          </ul>
+          <div class="footer__social">
+            {{#isnt settings.facebook_url '-'}}
+              <a href="{{#if settings.toggle_translations}}{{dc settings.facebook_url}}{{else}}{{settings.facebook_url}}{{/if}}" target="_blank" class="footer__social-link footer__social-link_facebook fab fa-facebook"></a>
+            {{/isnt}}
+            {{#isnt settings.twitter_url '-'}}
+              <a href="{{#if settings.toggle_translations}}{{dc settings.twitter_url}}{{else}}{{settings.twitter_url}}{{/if}}" target="_blank" class="footer__social-link footer__social-link_twitter fab fa-twitter"></a>
+            {{/isnt}}
+            {{#isnt settings.google_plus_url '-'}}
+              <a href="{{#if settings.toggle_translations}}{{dc settings.google_plus_url}}{{else}}{{settings.google_plus_url}}{{/if}}" target="_blank" class="footer__social-link footer__social-link_google-plus fab fa-google-plus-g"></a>
+            {{/isnt}}
+            {{#isnt settings.linkedin_url '-'}}
+              <a href="{{#if settings.toggle_translations}}{{dc settings.linkedin_url}}{{else}}{{settings.linkedin_url}}{{/if}}" target="_blank" class="footer__social-link footer__social-link_linkedin fab fa-linkedin"></a>
+            {{/isnt}}
+            {{#isnt settings.youtube_url '-'}}
+              <a href="{{#if settings.toggle_translations}}{{dc settings.youtube_url}}{{else}}{{settings.youtube_url}}{{/if}}" target="_blank" class="footer__social-link footer__social-link_youtube-play fab fa-youtube-play"></a>
+            {{/isnt}}
+            {{#isnt settings.instagram_url '-'}}
+              <a href="{{#if settings.toggle_translations}}{{dc settings.instagram_url}}{{else}}{{settings.instagram_url}}{{/if}}" target="_blank" class="footer__social-link footer__social-link_instagram fab fa-instagram"></a>
+            {{/isnt}}
+          </div>
+        </div>
+      </div>
+
+      <div class="footer_copyright">&copy; {{help_center.name}}</a></div>
+    </div>
+  </footer>
+</div>
+</div>
+
+{{#if settings.toggle_translations}}
+  <div hidden data-lt-i18n-dictionary>
+    <div data-lt-i18n="search_placeholder">{{dc settings.search_placeholder}}</div>
+  </div>
+
+  <script>
+    var $ltDictionary = $('[data-lt-i18n-dictionary]');
+    $('[role="search"] input[type="search"]').each(function (index, element) {
+      $(element).attr('placeholder', $ltDictionary.find('[data-lt-i18n="search_placeholder"]').html());
+    });
+  </script>
+{{/if}}
